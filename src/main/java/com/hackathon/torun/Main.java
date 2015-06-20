@@ -21,57 +21,24 @@ public class Main {
 
 
     public static void main(String[] args) {
-        //launch(args);
 
-        String TOKEN = "CAACEdEose0cBANbEQTKScaZBWLznwO9HSBXB19sC2OXkJfZBFLgTcC6BRIJNPglOby7HenCSKgx3uKuNxP9E06nlNrJRFXg4nvMMV2SFkLZA4cypmPLSFw7DkiftnU5JTF3ImfUllMerOPU7T6KdMIxFAEuEfa26ZBHmeMgYzsuSyy7ld5l1jBFcXwjhBmcZD";
+        String TOKEN = "CAACEdEose0cBAD3U1Ny10s4xMZBKL4OO8L0wPUmcgchUTgbykZCpZBxMzBkxYuwSHR9Dvhe2eEoTKyfYCoNUMjrXZC0MOkEJ58CIouPW5PfIUZCGieYV1RCYbXHnHNtQGik2j3xYxPUAQJka2Fc44dHxMLC195AebIjWejmfW8ZCijAQFwXsWRzm9cxNIuvurQIsZCxL4LIBk7hZA9H7AHpL7l219RbcGhcZD";
 
+        // search tool
+        FBFetcher fbFetcher = new FBFetcher(TOKEN);
 
-        Calendar today = Calendar.getInstance();
-        today.set(Calendar.HOUR, 0);
-        today.set(Calendar.MINUTE, 0);
-        today.set(Calendar.MILLISECOND, 0);
+        // search arguments
+        String category = "IT";
+        String city = "Torun";
+        String[] searchTags = {"JUG", "Szkoła", "Copernicon"};
 
+        // perform search
+        List<FBEvent> events = fbFetcher.fetchIncomingEvents(category, city, searchTags);
 
-
-        String query = "SELECT eid, name, location, start_time, description, pic_small, venue FROM event WHERE  CONTAINS(\"Toruń\")  and  start_time > \"" + today.getTime() + "\""; //   CONTAINS(\"Toruń\") or CONTAINS(\"Bydgoszcz\")";
-        FacebookClient fbc = new DefaultFacebookClient(TOKEN, Version.VERSION_2_0);
-
-
-        List<JsonObject> objList = fbc.executeFqlQuery(query, JsonObject.class);
-
-        for(JsonObject data: objList){
-
-            String event_id = data.getString("eid");
-            String name = data.getString("name");
-            String desc = data.getString("description");
-            String picurl = data.getString("pic_small");
-            String starttime = data.getString("start_time");
-            String location = data.getString("location");
-
-            String city = "";
-            String street = "";
-
-            try {
-                JsonObject venue = data.getJsonObject("venue");
-
-                street = venue.getString("street");
-                city = venue.getString("city");
-
-            } catch(JsonException e) {}
-
-
-            System.out.println(event_id + " || " +
-                    starttime + " || " +
-                    name + " || " +
-                    city + " || " +
-                    street + " || " );
-            /*+
-                    location + " || " +
-                    picurl + " || " +
-                    desc);
-                    */
+        // do something with results...
+        for(FBEvent ev: events) {
+            System.out.println(ev.getEventID() + " || "  + ev.getEventName());
         }
 
-        System.out.println(objList.size());
     }
 }
