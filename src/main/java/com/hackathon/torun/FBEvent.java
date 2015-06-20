@@ -18,6 +18,8 @@ public class FBEvent {
     private String location_place;
     private String location_city;
     private String location_street;
+    private double latitude = 0.0;
+    private double longitude = 0.0;
 
     public FBEvent(String category, JsonObject jsonEvent) {
 
@@ -35,6 +37,9 @@ public class FBEvent {
 
             this.location_city = venue.getString("city");
             this.location_street = venue.getString("street");
+
+            this.latitude = venue.getDouble("latitude");
+            this.longitude = venue.getDouble("longitude");
 
         } catch(JsonException e) {
             this.location_city = "";
@@ -82,4 +87,10 @@ public class FBEvent {
         return this.location_street;
     }
 
+    public double distanceFromPoint(double lat, double lon) {
+        double dx = this.latitude - lat;
+        double dy = this.longitude - lon;
+
+        return Math.sqrt(dx*dx + dy*dy);
+    }
 }

@@ -29,7 +29,7 @@ public class FBFetcher {
         return today.getTime();
     }
 
-    private String buildQuery(String searchTown, String[] searchTags) {
+    private String buildQuery(String[] searchTags) {
 
         String queryStatement = "SELECT eid, name, location, start_time, description, pic_small, creator, venue FROM event ";
         String whereStatement = "WHERE start_time > \"" + this.getCurrentDate() + "\" ";
@@ -47,12 +47,13 @@ public class FBFetcher {
     }
 
 
-    public List<FBEvent> fetchIncomingEvents(String category, String searchTown, String[] searchTags) {
+    public List<FBEvent> fetchIncomingEvents(String category, String[] searchTags) {
 
         // Build fql query
-        String fbQuery = this.buildQuery(searchTown, searchTags);
+        String fbQuery = this.buildQuery(searchTags);
 
-        //System.out.println(fbQuery);
+        System.out.println(fbQuery);
+        //System.exit(0);
 
         // Connect to fb
         FacebookClient fbc = new DefaultFacebookClient(this.accessToken, Version.VERSION_2_0);
@@ -65,7 +66,7 @@ public class FBFetcher {
         for(JsonObject jso: objList) {
             FBEvent fbe = new FBEvent(category, jso);
 
-            if(fbe.getLocationCity().equals(searchTown)) eventsList.add(fbe);
+            if(fbe.distanceFromPoint(53.02, 18.609) <= 0.075) eventsList.add(fbe);
         }
 
         return eventsList;

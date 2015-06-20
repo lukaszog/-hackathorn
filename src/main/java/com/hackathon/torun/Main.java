@@ -22,22 +22,26 @@ public class Main {
 
     public static void main(String[] args) {
 
-        String TOKEN = "CAACEdEose0cBAD3U1Ny10s4xMZBKL4OO8L0wPUmcgchUTgbykZCpZBxMzBkxYuwSHR9Dvhe2eEoTKyfYCoNUMjrXZC0MOkEJ58CIouPW5PfIUZCGieYV1RCYbXHnHNtQGik2j3xYxPUAQJka2Fc44dHxMLC195AebIjWejmfW8ZCijAQFwXsWRzm9cxNIuvurQIsZCxL4LIBk7hZA9H7AHpL7l219RbcGhcZD";
+        String TOKEN = "CAACEdEose0cBAM10dzSZC3GWQHWZAduuqAuGHU07uGXvJ0Fe9HwZBpkM2ZBDH7gRtIlu5KfPR2N01ilKDMFu8Fmk3BN6TQFZBH3W4sMZBkW60RrGGxDpQE5ascgskvZBuZCBLgbEZCZBgiesm7KjZCVtrRvDclUHuC26I9ZCmfepXHW8ouNQu4wDumucSTfxbRhgE8oZD";
+
+
 
         // search tool
         FBFetcher fbFetcher = new FBFetcher(TOKEN);
 
         // search arguments
         String category = "IT";
-        String city = "Torun";
-        String[] searchTags = {"JUG", "Szkoła", "Copernicon"};
+        String[] searchTags = { "IT", "komputery", "programowie", "technologie", "dev", "php", "sql", "java",
+                                "python", "c#", "javascript", "techklub", "hardware", "geek", "mission torun",
+                                "hackaton", "hackathon", "ataki sieciowe", "sieci", "smartspace", "Informat",
+                                "internet", "nowoczesn", "jug", "plssug", "Informatyki", "roboty", "3d"};
 
         // perform search
-        List<FBEvent> events = fbFetcher.fetchIncomingEvents(category, city, searchTags);
+        List<FBEvent> events = fbFetcher.fetchIncomingEvents(category, searchTags);
 
         // do something with results...
         for(FBEvent ev: events) {
-            System.out.println(ev.getEventID() + " || "  + ev.getEventName());
+            System.out.println(ev.getEventID() + " || "  + ev.getLocationCity() + " || " + ev.getEventName());
         }
 
     }
