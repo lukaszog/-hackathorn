@@ -19,7 +19,6 @@ public class FBFetcher {
         this.accessToken = accessToken;
     }
 
-
     private Date getCurrentDate() {
         Calendar today = Calendar.getInstance();
         today.set(Calendar.HOUR, 0);
@@ -43,14 +42,13 @@ public class FBFetcher {
             whereStatement += " AND (" + mapTags + ")";
         }
 
-        return queryStatement + whereStatement;
+        return (queryStatement + whereStatement).replace("\n", "").replace("\r", "");
     }
 
-
-    public List<FBEvent> fetchIncomingEvents(String category, String[] searchTags) {
+    public List<FBEvent> fetchIncomingEvents(FBEventCategory fbCategory) {
 
         // Build fql query
-        String fbQuery = this.buildQuery(searchTags);
+        String fbQuery = this.buildQuery(fbCategory.getSearchTags());
 
         System.out.println(fbQuery);
         //System.exit(0);
@@ -64,7 +62,7 @@ public class FBFetcher {
 
         // Filter results
         for(JsonObject jso: objList) {
-            FBEvent fbe = new FBEvent(category, jso);
+            FBEvent fbe = new FBEvent(fbCategory.getCategoryName(), jso);
 
             if(fbe.distanceFromPoint(53.02, 18.609) <= 0.075) eventsList.add(fbe);
         }
