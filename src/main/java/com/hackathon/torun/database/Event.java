@@ -5,6 +5,9 @@ package com.hackathon.torun.database;
  */
 import org.springframework.data.annotation.Id;
 
+import java.util.List;
+
+// TODO - duplicate of FBEvent class
 public class Event {
 
     //id will be used for storing MongoDB _id
@@ -23,14 +26,14 @@ public class Event {
     private String location_street;
     private double latitude = 0.0;
     private double longitude = 0.0;
-    private String categoy;
+    private String category;
 
     public String getCategoy() {
-        return categoy;
+        return category;
     }
 
     public void setCategoy(String categoy) {
-        this.categoy = categoy;
+        this.category = categoy;
     }
 
     public Event(String event_id, String event_name, String event_description, String event_category, String event_owner, String start_time, String picture_url, String location_place, String location_city, String location_street,String category) {
@@ -45,9 +48,7 @@ public class Event {
         this.location_place = location_place;
         this.location_city = location_city;
         this.location_street = location_street;
-        this.categoy = category;
-
-
+        this.category = category; // TODO - duplicated event_category column
     }
 
     public String getStart_time() {
@@ -171,5 +172,19 @@ public class Event {
                 ", latitude=" + this.latitude +
                 ", longitude=" + this.longitude +
                 '}';
+    }
+
+    /**
+     * Created by lukasz on 20.06.15.
+     */
+    public static interface EventDAO {
+
+        public void create(Event p);
+
+        public Event readById(String id);
+        public Event readByName(String name);
+        public void update(Event p);
+        public List<Event> findAll();
+        public int deleteById(String id);
     }
 }

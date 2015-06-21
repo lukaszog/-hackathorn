@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="module_hackathon" default="compile.module.hackathon">
+  <dirname property="module.hackathon.basedir" file="${ant.file.module_hackathon}"/>
+  
+  <property name="module.jdk.home.hackathon" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.hackathon" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.hackathon" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.hackathon" value="-encoding UTF-8 -source 8 -target 1.8 ${compiler.args}"/>
+  
+  <property name="hackathon.output.dir" value="${module.hackathon.basedir}/target/classes"/>
+  <property name="hackathon.testoutput.dir" value="${module.hackathon.basedir}/target/test-classes"/>
+  
+  <path id="hackathon.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="hackathon.module.production.classpath">
+    <path refid="${module.jdk.classpath.hackathon}"/>
+    <path refid="library.maven:_com.restfb:restfb:1.11.0.classpath"/>
+    <path refid="library.maven:_org.json:json:20141113.classpath"/>
+    <path refid="library.maven:_org.mongodb:mongo-java-driver:2.10.1.classpath"/>
+    <path refid="library.maven:_org.springframework.data:spring-data-mongodb:1.7.0.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-tx:4.0.9.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-context:4.0.9.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-aop:4.0.9.release.classpath"/>
+    <path refid="library.maven:_aopalliance:aopalliance:1.0.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-beans:4.0.9.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-core:4.0.9.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-expression:4.0.9.release.classpath"/>
+    <path refid="library.maven:_org.springframework.data:spring-data-commons:1.10.0.release.classpath"/>
+    <path refid="library.maven:_org.slf4j:slf4j-api:1.7.10.classpath"/>
+    <path refid="library.maven:_org.facebook4j:facebook4j-core:2.2.2.classpath"/>
+  </path>
+  
+  <path id="hackathon.runtime.production.module.classpath">
+    <pathelement location="${hackathon.output.dir}"/>
+    <path refid="library.maven:_com.restfb:restfb:1.11.0.classpath"/>
+    <path refid="library.maven:_org.json:json:20141113.classpath"/>
+    <path refid="library.maven:_org.mongodb:mongo-java-driver:2.10.1.classpath"/>
+    <path refid="library.maven:_org.springframework.data:spring-data-mongodb:1.7.0.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-tx:4.0.9.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-context:4.0.9.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-aop:4.0.9.release.classpath"/>
+    <path refid="library.maven:_aopalliance:aopalliance:1.0.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-beans:4.0.9.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-core:4.0.9.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-expression:4.0.9.release.classpath"/>
+    <path refid="library.maven:_org.springframework.data:spring-data-commons:1.10.0.release.classpath"/>
+    <path refid="library.maven:_org.slf4j:slf4j-api:1.7.10.classpath"/>
+    <path refid="library.maven:_org.slf4j:jcl-over-slf4j:1.7.10.classpath"/>
+    <path refid="library.maven:_org.facebook4j:facebook4j-core:2.2.2.classpath"/>
+  </path>
+  
+  <path id="hackathon.module.classpath">
+    <path refid="${module.jdk.classpath.hackathon}"/>
+    <pathelement location="${hackathon.output.dir}"/>
+    <path refid="library.maven:_com.restfb:restfb:1.11.0.classpath"/>
+    <path refid="library.maven:_org.json:json:20141113.classpath"/>
+    <path refid="library.maven:_org.mongodb:mongo-java-driver:2.10.1.classpath"/>
+    <path refid="library.maven:_org.springframework.data:spring-data-mongodb:1.7.0.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-tx:4.0.9.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-context:4.0.9.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-aop:4.0.9.release.classpath"/>
+    <path refid="library.maven:_aopalliance:aopalliance:1.0.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-beans:4.0.9.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-core:4.0.9.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-expression:4.0.9.release.classpath"/>
+    <path refid="library.maven:_org.springframework.data:spring-data-commons:1.10.0.release.classpath"/>
+    <path refid="library.maven:_org.slf4j:slf4j-api:1.7.10.classpath"/>
+    <path refid="library.maven:_org.slf4j:jcl-over-slf4j:1.7.10.classpath"/>
+    <path refid="library.maven:_org.facebook4j:facebook4j-core:2.2.2.classpath"/>
+  </path>
+  
+  <path id="hackathon.runtime.module.classpath">
+    <pathelement location="${hackathon.testoutput.dir}"/>
+    <pathelement location="${hackathon.output.dir}"/>
+    <path refid="library.maven:_com.restfb:restfb:1.11.0.classpath"/>
+    <path refid="library.maven:_org.json:json:20141113.classpath"/>
+    <path refid="library.maven:_org.mongodb:mongo-java-driver:2.10.1.classpath"/>
+    <path refid="library.maven:_org.springframework.data:spring-data-mongodb:1.7.0.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-tx:4.0.9.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-context:4.0.9.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-aop:4.0.9.release.classpath"/>
+    <path refid="library.maven:_aopalliance:aopalliance:1.0.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-beans:4.0.9.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-core:4.0.9.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-expression:4.0.9.release.classpath"/>
+    <path refid="library.maven:_org.springframework.data:spring-data-commons:1.10.0.release.classpath"/>
+    <path refid="library.maven:_org.slf4j:slf4j-api:1.7.10.classpath"/>
+    <path refid="library.maven:_org.slf4j:jcl-over-slf4j:1.7.10.classpath"/>
+    <path refid="library.maven:_org.facebook4j:facebook4j-core:2.2.2.classpath"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.hackathon">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.hackathon">
+    <patternset refid="excluded.from.module.hackathon"/>
+  </patternset>
+  
+  <path id="hackathon.module.sourcepath">
+    <dirset dir="${module.hackathon.basedir}">
+      <include name="src/main/java"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.hackathon" depends="compile.module.hackathon.production,compile.module.hackathon.tests" description="Compile module Hackathon"/>
+  
+  <target name="compile.module.hackathon.production" description="Compile module Hackathon; production classes">
+    <mkdir dir="${hackathon.output.dir}"/>
+    <javac destdir="${hackathon.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.hackathon}/javac">
+      <compilerarg line="${compiler.args.hackathon}"/>
+      <bootclasspath refid="hackathon.module.bootclasspath"/>
+      <classpath refid="hackathon.module.production.classpath"/>
+      <src refid="hackathon.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.hackathon"/>
+    </javac>
+    
+    <copy todir="${hackathon.output.dir}">
+      <fileset dir="${module.hackathon.basedir}/src/main/java">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.hackathon.tests" depends="compile.module.hackathon.production" description="compile module Hackathon; test classes" unless="skip.tests"/>
+  
+  <target name="clean.module.hackathon" description="cleanup module">
+    <delete dir="${hackathon.output.dir}"/>
+    <delete dir="${hackathon.testoutput.dir}"/>
+  </target>
+</project>

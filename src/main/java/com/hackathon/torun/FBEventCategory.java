@@ -10,11 +10,14 @@ import java.nio.file.Path;
 public class FBEventCategory {
 
     private String categoryName;
+    private String searchTagsString;
     private String[] searchTags;
+
 
     public FBEventCategory(Path categoryFile) throws IOException {
         this.categoryName = categoryFile.getFileName().toString().replace(".txt", "");
-        this.searchTags = new String(Files.readAllBytes(categoryFile)).split(",");
+        this.searchTagsString = new String(Files.readAllBytes(categoryFile));
+        this.searchTags = this.searchTagsString.split(",");
     }
 
     public String getCategoryName() {
@@ -23,5 +26,9 @@ public class FBEventCategory {
 
     public String[] getSearchTags() {
         return searchTags;
+    }
+
+    public String getSearchTagsString() {
+        return searchTagsString;
     }
 }

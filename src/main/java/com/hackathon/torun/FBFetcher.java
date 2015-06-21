@@ -4,7 +4,10 @@ import com.restfb.DefaultFacebookClient;
 import com.restfb.FacebookClient;
 import com.restfb.Version;
 import com.restfb.json.JsonObject;
-import org.json.JSONObject;
+//import facebook4j.*;
+//import facebook4j.internal.http.RequestMethod;
+//import facebook4j.internal.org.json.JSONException;
+//import org.json.JSONObject;
 
 import java.util.*;
 
@@ -14,6 +17,11 @@ import java.util.*;
 public class FBFetcher {
 
     private String accessToken;
+//    private Facebook facebook;
+//
+//    public FBFetcher(Facebook facebook) {
+//        this.facebook = facebook;
+//    }
 
     public FBFetcher(String accessToken) {
         this.accessToken = accessToken;
@@ -43,6 +51,7 @@ public class FBFetcher {
         }
 
         return (queryStatement + whereStatement).replace("\n", "").replace("\r", "");
+
     }
 
     public List<FBEvent> fetchIncomingEvents(FBEventCategory fbCategory) {
@@ -68,6 +77,38 @@ public class FBFetcher {
         }
 
         return eventsList;
+
+/// <---------------------------------------------------
+
+//        String searchQuery = "search?q=" + fbCategory.getSearchTagsString().replace(',', '|') + "&type=event" +
+//                "&center=53.020,18.609&distance=7000";
+
+
+//        System.out.println(searchQuery);
+//
+//        // Prepare and execute query
+//        BatchRequests<BatchRequest> batch = new BatchRequests<BatchRequest>();
+//        batch.add(new BatchRequest(RequestMethod.GET, searchQuery));
+//
+//        List<BatchResponse> results = null;
+//        try {
+//            results = this.facebook.executeBatch(batch);
+//
+//        } catch (FacebookException e) {
+//
+//        }
+//
+//
+//        System.out.println(results.size());
+//
+//        for(BatchResponse res : results){
+//            try {
+//                System.out.println(res.asJSONObject().get("data"));
+//            } catch (JSONException e) {
+//            } catch (FacebookException e) {}
+//        }
+//
+//        return null;
     }
 
 }
