@@ -16,9 +16,9 @@ import java.nio.file.Paths;
 import java.util.*;
 
 
-//import facebook4j.*;
-//import facebook4j.auth.AccessToken;
-//import facebook4j.internal.http.RequestMethod;
+import facebook4j.*;
+import facebook4j.auth.AccessToken;
+import facebook4j.internal.http.RequestMethod;
 
 /**
  *
@@ -49,24 +49,27 @@ public class Main {
         }
 
 
-//        String appId = "828403643923031";
-//        String appSecret = "2c1f506ffc32ba6e794553a87ec1c5fc";
+//        String appId = "nope";
+//        String appSecret = "<>";
 //
 //        Facebook facebook = new FacebookFactory().getInstance();
 //
 //        facebook.setOAuthAppId(appId, appSecret);
-//        String accessTokenString = "CAALxbcDtOlcBADoDUVPGapUu8KCH9xfzSHiPqDiz1nZAgpWO2WLWML1aTPTjDW00f43tZCUBkkL5LBVgiuGHmzeGJjfCb3QrmCJBPkXApfZAeXi2R9NvTH94XHY673XnLZAZBvAMGuxipCj6mwLdzHdxrWZCctc613gYmEmZBUy9RiVH24Vr3KZApoqJPPbTZCDnadF6Tc4shx8Oe0w3CRnGf";
-//        AccessToken at = new AccessToken(accessTokenString);
-//        facebook.setOAuthAccessToken(at);
+//
+//        AccessToken at = facebook.getOAuthAccessToken();
+//
+//        System.out.println(at.toString());
+
+        //String accessTokenString = "CAALxbcDtOlcBADoDUVPGapUu8KCH9xfzSHiPqDiz1nZAgpWO2WLWML1aTPTjDW00f43tZCUBkkL5LBVgiuGHmzeGJjfCb3QrmCJBPkXApfZAeXi2R9NvTH94XHY673XnLZAZBvAMGuxipCj6mwLdzHdxrWZCctc613gYmEmZBUy9RiVH24Vr3KZApoqJPPbTZCDnadF6Tc4shx8Oe0w3CRnGf";
+        //AccessToken at = new AccessToken(accessTokenString);
+        //facebook.setOAuthAccessToken(at);
 //
 //
 //        FBFetcher fbFetcher = new FBFetcher(facebbok);
-
-
 //        System.exit(0);
 
 
-        String TOKEN = "CAACEdEose0cBANeeBU7i7ZAeBYcsAqn91TpZBYj5nogDozfK91rO8J4EyZCxoS0utaYAHkNwS0mnZCKZBdlVoKgsju80ZCpZB3q0PxfYQ0e50C63AbZAwAZCOnd6zn8m5xR6EEZBdivsohDnZBFwcrijVAgF89LyqpQ23S2ZCpXlMsrZAMZAy1gZCcIvdcUoLPBwT6Tg88ZD";
+        String TOKEN = "CAALxbcDtOlcBAG2PkUgwy1aj4ZBjoZCvy0cnSMID3DYRU9Hxv4ogKXxQtZBIZCPugDPSMmLHbCsfXA0b3t9JnfDRZAZAHIRc1D0o9rq5qAwVeQlt41zfs2Ws7szsEbaXm8xCAja4i8ioCWf8l33YlyXR5ujYLmZCVuwcG987tTZAhKaisSEUiyuw";
 
         FBFetcher fbFetcher = new FBFetcher(TOKEN);
 
