@@ -157,19 +157,19 @@ public class Event {
     @Override
     public String toString() {
         return "Event{" +
-                "id='" + id + '\'' +
-                ", event_id='" + event_id + '\'' +
-                ", event_name='" + event_name + '\'' +
-                ", event_description='" + event_description + '\'' +
-                ", event_category='" + event_category + '\'' +
-                ", event_owner='" + event_owner + '\'' +
-                ", start_time='" + start_time + '\'' +
-                ", picture_url='" + picture_url + '\'' +
-                ", location_place='" + location_place + '\'' +
-                ", location_city='" + location_city + '\'' +
-                ", location_street='" + location_street + '\'' +
-                ", latitude=" + latitude +
-                ", longitude=" + longitude +
+                "id='" + this.id + '\'' +
+                ", event_id='" + this.event_id + '\'' +
+                ", event_name='" + this.event_name + '\'' +
+                ", event_description='" + this.event_description + '\'' +
+                ", event_category='" + this.event_category + '\'' +
+                ", event_owner='" + this.event_owner + '\'' +
+                ", start_time='" + this.start_time + '\'' +
+                ", picture_url='" + this.picture_url + '\'' +
+                ", location_place='" + this.location_place + '\'' +
+                ", location_city='" + this.location_city + '\'' +
+                ", location_street='" + this.location_street + '\'' +
+                ", latitude=" + this.latitude +
+                ", longitude=" + this.longitude +
                 '}';
     }
 }

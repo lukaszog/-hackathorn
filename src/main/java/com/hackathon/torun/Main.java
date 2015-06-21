@@ -2,26 +2,16 @@ package com.hackathon.torun;
 
 import com.hackathon.torun.database.Event;
 import com.mongodb.*;
-import com.restfb.DefaultFacebookClient;
-import com.restfb.FacebookClient;
-import com.restfb.Version;
-import com.restfb.json.JsonException;
-import com.restfb.json.JsonObject;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
-import org.springframework.data.authentication.UserCredentials;
-import org.springframework.data.mongodb.MongoDbFactory;
+import org.springframework.dao.DuplicateKeyException;
 import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.SimpleMongoDbFactory;
 
-import java.io.File;
 import java.io.IOException;
 import java.net.UnknownHostException;
-import java.nio.file.DirectoryStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.text.SimpleDateFormat;
 import java.util.*;
 
 /**
@@ -61,13 +51,15 @@ public class Main {
                             ev.getEventDescription(),ev.getEventCategory(),
                             ev.getEventOwner(),ev.getStartTime(),
                             ev.getPictureURL(),ev.getLocationPlace(),
-                            ev.getLocationCity(),ev.getLocationStreet(),"IT"
-                    ));
+                            ev.getLocationCity(),ev.getLocationStreet(),"IT"));
+
+                    try {
+                        // Save data in database
+                        mongoOperation.insert(eve, Event.class);
+                    } catch(DuplicateKeyException dk) {System.err.println("* Duplicat event id:" + ev.getEventID());}
+                    eve.clear();
                 }
 
-                // Save data in database
-                mongoOperation.insert(eve, Event.class);
-                eve.clear();
                 Thread.sleep(1000);
             }
 

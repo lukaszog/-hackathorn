@@ -2,11 +2,15 @@ package com.hackathon.torun;
 
 import com.restfb.json.JsonException;
 import com.restfb.json.JsonObject;
+import org.springframework.data.annotation.Id;
 
 /**
  * Created by piotr on 20.06.15.
  */
 public class FBEvent {
+
+    @Id
+    private String id;
 
     private String event_id;
     private String event_name;
@@ -92,5 +96,24 @@ public class FBEvent {
         double dy = this.longitude - lon;
 
         return Math.sqrt(dx*dx + dy*dy);
+    }
+
+    @Override
+    public String toString() {
+        return "Event{" +
+                "id='" + id + '\'' +
+                ", event_id='" + event_id + '\'' +
+                ", event_name='" + event_name + '\'' +
+                ", event_description='" + event_description + '\'' +
+                ", event_category='" + event_category + '\'' +
+                ", event_owner='" + event_owner + '\'' +
+                ", start_time='" + start_time + '\'' +
+                ", picture_url='" + picture_url + '\'' +
+                ", location_place='" + location_place + '\'' +
+                ", location_city='" + location_city + '\'' +
+                ", location_street='" + location_street + '\'' +
+                ", latitude=" + latitude +
+                ", longitude=" + longitude +
+                '}';
     }
 }
